@@ -48,10 +48,10 @@
   <ItemGroup>
     <Compile Include="LambdaReflection\Invocation\TestActionInvoker.cs" />
     <Compile Include="LambdaReflection\Invocation\TestFuncInvoker.cs" />
-    <Compile Include="LambdaReflection\TestAccessors.cs" />
-    <Compile Include="LambdaReflection\TestConstructor.cs" />
+    <Compile Include="LambdaReflection\Members\TestAccessors.cs" />
+    <Compile Include="LambdaReflection\Members\TestConstructor.cs" />
     <Compile Include="LambdaReflection\TestExpressionConcat.cs" />
-    <Compile Include="LambdaReflection\TestModifiers.cs" />
+    <Compile Include="LambdaReflection\Members\TestModifiers.cs" />
     <Compile Include="LibraryDomain\Book.cs" />
     <Compile Include="LibraryDomain\Constants.cs" />
     <Compile Include="LibraryDomain\Page.cs" />

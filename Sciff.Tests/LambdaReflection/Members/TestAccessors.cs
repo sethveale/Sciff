@@ -1,9 +1,10 @@
 ﻿using System;
 using NUnit.Framework;
 using Sciff.Logic.LambdaReflection;
+using Sciff.Logic.LambdaReflection.Members;
 using Sciff.Tests.LibraryDomain;
 
-namespace Sciff.Tests.LambdaReflection
+namespace Sciff.Tests.LambdaReflection.Members
 {
     [TestFixture]
     public class TestAccessors

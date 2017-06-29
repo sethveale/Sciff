@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Sciff.Logic.LambdaReflection
+namespace Sciff.Logic.LambdaReflection.Members
 {
     /// <summary>
     ///     Helper for modifying (public) fields and properties of objects (i.e. not static members)

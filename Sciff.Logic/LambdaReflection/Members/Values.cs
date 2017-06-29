@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Sciff.Logic.LambdaReflection
+namespace Sciff.Logic.LambdaReflection.Members
 {
     /// <summary>
     ///     Wraps up ways to reflect on Properties and Fields for a type

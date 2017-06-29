@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Sciff.Logic.LambdaReflection
+namespace Sciff.Logic.LambdaReflection.Members
 {
     /// <summary>
     ///     Finds and wraps constructors that match the type parameters of <see cref="Func{TResult}" />s
