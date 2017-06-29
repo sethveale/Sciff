@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Sciff.Tests.Library
+namespace Sciff.Tests.LibraryDomain
 {
     public class Page
     {

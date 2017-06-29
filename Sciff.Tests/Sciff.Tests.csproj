@@ -52,10 +52,10 @@
     <Compile Include="LambdaReflection\TestConstructor.cs" />
     <Compile Include="LambdaReflection\TestExpressionConcat.cs" />
     <Compile Include="LambdaReflection\TestModifiers.cs" />
-    <Compile Include="Library\Book.cs" />
-    <Compile Include="Library\Constants.cs" />
-    <Compile Include="Library\Page.cs" />
-    <Compile Include="Library\Subject.cs" />
+    <Compile Include="LibraryDomain\Book.cs" />
+    <Compile Include="LibraryDomain\Constants.cs" />
+    <Compile Include="LibraryDomain\Page.cs" />
+    <Compile Include="LibraryDomain\Subject.cs" />
     <Compile Include="TestContractHelpers.cs" />
   </ItemGroup>
   <ItemGroup>

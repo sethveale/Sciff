@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Sciff.Tests.Library
+namespace Sciff.Tests.LibraryDomain
 {
     public class Topic
     {

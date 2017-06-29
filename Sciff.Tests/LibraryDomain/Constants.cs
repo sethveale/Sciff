@@ -1,4 +1,4 @@
-﻿namespace Sciff.Tests.Library
+﻿namespace Sciff.Tests.LibraryDomain
 {
     public static class Constants
     {
