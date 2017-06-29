@@ -1,6 +1,5 @@
 ﻿using System;
 using NUnit.Framework;
-using Sciff.Logic.LambdaReflection;
 using Sciff.Logic.LambdaReflection.Members;
 using Sciff.Tests.LibraryDomain;
 

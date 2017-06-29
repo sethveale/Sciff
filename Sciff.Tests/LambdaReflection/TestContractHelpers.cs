@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Sciff.Logic.LambdaReflection;
 
-namespace Sciff.Tests
+namespace Sciff.Tests.LambdaReflection
 {
     [TestFixture]
     public class TestContractHelpers

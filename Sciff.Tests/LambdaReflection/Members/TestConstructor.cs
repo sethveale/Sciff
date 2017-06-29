@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using NUnit.Framework;
-using Sciff.Logic.LambdaReflection;
 using Sciff.Logic.LambdaReflection.Members;
 
 namespace Sciff.Tests.LambdaReflection.Members

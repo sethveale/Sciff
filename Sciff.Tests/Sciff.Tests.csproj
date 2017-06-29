@@ -56,7 +56,7 @@
     <Compile Include="LibraryDomain\Constants.cs" />
     <Compile Include="LibraryDomain\Page.cs" />
     <Compile Include="LibraryDomain\Subject.cs" />
-    <Compile Include="TestContractHelpers.cs" />
+    <Compile Include="LambdaReflection\TestContractHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
