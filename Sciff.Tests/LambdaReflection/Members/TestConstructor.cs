@@ -26,6 +26,15 @@ namespace Sciff.Tests.LambdaReflection.Members
         }
 
         [Test]
+        public void TestCache()
+        {
+            Assert.That(
+                Constructor.AsFunc<long, DateTime>(),
+                Is.SameAs(Constructor.AsFunc<long, DateTime>())
+            );
+        }
+
+        [Test]
         public void TestFunc1()
         {
             Assert.That(
