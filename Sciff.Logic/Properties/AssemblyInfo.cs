@@ -9,6 +9,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Sciff")]
 [assembly: AssemblyCopyright("Copyright © Intouch Communications Ltd 2017")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("en-US")]
+[assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: InternalsVisibleTo("Sciff.Tests")]
