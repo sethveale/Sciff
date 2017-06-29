@@ -41,8 +41,8 @@ namespace Sciff.Logic.LambdaReflection.Members
 
         private static Expression<Action<T, TValue>> MakeLambda<TValue>(string name)
         {
-            var propertyOrField = Values<T>.AsMember<TValue>(name);
-            var member = (MemberInfo) propertyOrField.Item1 ?? propertyOrField.Item2;
+            var (property, field) = Values<T>.AsMember<TValue>(name);
+            var member = (MemberInfo) property ?? field;
 
             var objParam = Expression.Parameter(typeof(T));
 

@@ -16,9 +16,10 @@ namespace Sciff.Logic.LambdaReflection.Members
         public static Tuple<PropertyInfo, FieldInfo> AsMember<TValue>(string name)
         {
             var result = AsMember(name);
+            var (property, field) = result;
 
-            if (result.Item1 != null && result.Item1.PropertyType != typeof(TValue) ||
-                result.Item2 != null && result.Item2.FieldType != typeof(TValue))
+            if (property != null && property.PropertyType != typeof(TValue) ||
+                field != null && field.FieldType != typeof(TValue))
                 throw new MissingMemberException(typeof(TValue).Name, name);
 
             return result;
@@ -32,7 +33,11 @@ namespace Sciff.Logic.LambdaReflection.Members
         {
             var result = typeof(T).GetMember(name)
                 .Select(m => Tuple.Create(m as PropertyInfo, m as FieldInfo))
-                .FirstOrDefault(t => t.Item1 != null || t.Item2 != null);
+                .FirstOrDefault(t =>
+                {
+                    var (property, field) = t;
+                    return property != null || field != null;
+                });
 
             if (result == null)
                 throw new MissingMemberException(typeof(T).Name, name);
