@@ -109,7 +109,7 @@ namespace Sciff.Logic.LambdaReflection
             var funcOrLambdaType = typeof(TFuncOrLambda);
 
             var funcType = funcOrLambdaType.IsGenericType &&
-                            funcOrLambdaType.GetGenericTypeDefinition() == typeof(Expression<>)
+                           funcOrLambdaType.GetGenericTypeDefinition() == typeof(Expression<>)
                 ? funcOrLambdaType.GenericTypeArguments[0]
                 : funcOrLambdaType;
 

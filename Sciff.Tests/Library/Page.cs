@@ -6,15 +6,17 @@ namespace Sciff.Tests.Library
 {
     public class Page
     {
-        [Key,
-         Column(Order = 0),
-         Range(typeof(long), Constants.MinIsbnString, Constants.MaxIsbnString),
-         ForeignKey("Book")]
+        [Key]
+        [Column(Order = 0)]
+        [Range(typeof(long), Constants.MinIsbnString, Constants.MaxIsbnString)]
+        [ForeignKey("Book")]
         public long Isbn { get; set; }
 
         public virtual Book Book { get; set; }
 
-        [Key, Column(Order = 1), Range(1, int.MaxValue)]
+        [Key]
+        [Column(Order = 1)]
+        [Range(1, int.MaxValue)]
         public int Number { get; set; }
 
         [Required]

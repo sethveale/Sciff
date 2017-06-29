@@ -45,7 +45,6 @@
     <Compile Include="LambdaReflection\Accessors.cs" />
     <Compile Include="LambdaReflection\Constructor.cs" />
     <Compile Include="LambdaReflection\ContractHelperExtensions.cs" />
-    <Compile Include="LambdaReflection\DeReference.cs" />
     <Compile Include="LambdaReflection\ExpressionExtensions.cs" />
     <Compile Include="LambdaReflection\Invocation\ActionInvoker.cs" />
     <Compile Include="LambdaReflection\Invocation\FuncInvoker.cs" />

@@ -5,7 +5,8 @@ namespace Sciff.Tests.Library
 {
     public class Topic
     {
-        [Key, MaxLength(Constants.LongTextLength)]
+        [Key]
+        [MaxLength(Constants.LongTextLength)]
         public string Name { get; set; }
 
         public virtual ICollection<Topic> Aliases { get; set; }
