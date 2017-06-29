@@ -19,7 +19,7 @@ namespace Sciff.Logic.LambdaReflection.Invocation
         {
             var (memberInvokerType, delegateType) = ToActionInvokerTypes(method);
             var action = Delegate.CreateDelegate(delegateType, null, method);
-            return (ActionInvoker)Activator.CreateInstance(memberInvokerType, action);
+            return (ActionInvoker) Activator.CreateInstance(memberInvokerType, action);
         }
 
         /// <summary>
@@ -31,8 +31,9 @@ namespace Sciff.Logic.LambdaReflection.Invocation
         public static Tuple<Type, Type> ToActionInvokerTypes(MethodInfo method)
         {
             var parameters = method.GetParameters();
-            if (parameters.Any(p => p == null || p.IsRetval || p.IsOut))
-                throw new NotSupportedException("All parameters must be input only, out and ref don't work in a action");
+            if (parameters.Any(ContractHelpers.IsComplexParmeter))
+                throw new NotSupportedException(
+                    "All parameters must be input only, out and ref don't work in a action");
 
             if (method.ReturnType != typeof(void))
                 throw new NotSupportedException("Must not have a return type to be a Action, use FuncInvoker instead");
@@ -45,6 +46,12 @@ namespace Sciff.Logic.LambdaReflection.Invocation
 
             switch (typeParameters.Length)
             {
+                case 0:
+                    return Tuple.Create(
+                        typeof(ActionInvoker0),
+                        typeof(Action)
+                    );
+
                 case 1:
                     invokerType = typeof(ActionInvoker<>);
                     actionType = typeof(Action<>);
@@ -79,6 +86,27 @@ namespace Sciff.Logic.LambdaReflection.Invocation
     /// <summary>
     ///     Invoker for methods and properties that can be represented as a Action
     /// </summary>
+    public class ActionInvoker0 : ActionInvoker
+    {
+        private readonly Action _action;
+
+        /// <param name="action">the action to be invoked</param>
+        public ActionInvoker0(Action action)
+        {
+            _action = action;
+        }
+
+        /// <inheritdoc />
+        public override void Invoke(params object[] args)
+        {
+            _action();
+        }
+    }
+
+
+    /// <summary>
+    ///     Invoker for methods and properties that can be represented as a Action
+    /// </summary>
     public class ActionInvoker<T0> : ActionInvoker
     {
         private readonly Action<T0> _action;
@@ -92,7 +120,7 @@ namespace Sciff.Logic.LambdaReflection.Invocation
         /// <inheritdoc />
         public override void Invoke(params object[] args)
         {
-            _action((T0)args[0]);
+            _action((T0) args[0]);
         }
     }
 
@@ -112,7 +140,7 @@ namespace Sciff.Logic.LambdaReflection.Invocation
         /// <inheritdoc />
         public override void Invoke(params object[] args)
         {
-            _action((T0)args[0], (T1)args[1]);
+            _action((T0) args[0], (T1) args[1]);
         }
     }
 
@@ -132,7 +160,7 @@ namespace Sciff.Logic.LambdaReflection.Invocation
         /// <inheritdoc />
         public override void Invoke(params object[] args)
         {
-            _action((T0)args[0], (T1)args[1], (T2)args[2]);
+            _action((T0) args[0], (T1) args[1], (T2) args[2]);
         }
     }
 }

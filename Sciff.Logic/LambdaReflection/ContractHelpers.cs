@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Sciff.Logic.LambdaReflection
 {
     /// <summary>
     ///     Fixes CodeContracts for selected reflection methods
     /// </summary>
-    public static class ContractHelperExtensions
+    public static class ContractHelpers
     {
         /// <summary>
         ///     Makes a generic type
@@ -20,5 +21,11 @@ namespace Sciff.Logic.LambdaReflection
 
             return genericTypeDefinition.MakeGenericType(typeArguments);
         }
+
+        /// <summary>
+        ///     Any parameter that uses pointers, references etc under the hood
+        /// </summary>
+        public static readonly Func<ParameterInfo, bool> IsComplexParmeter =
+            p => p == null || p.IsRetval || p.IsOut || p.ParameterType.IsByRef;
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="Library\Constants.cs" />
     <Compile Include="Library\Page.cs" />
     <Compile Include="Library\Subject.cs" />
+    <Compile Include="TestContractHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

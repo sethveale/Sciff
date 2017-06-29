@@ -15,10 +15,64 @@ namespace Sciff.Tests.LambdaReflection.Invocation
             _string = "fubar";
         }
 
+        public int FiveParameters(int one, int two, int three, int four, int five)
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void TestThatFiveParametersIsTooMany()
+        {
+            Assert.That(
+                () => FuncInvoker.Create(typeof(TestFuncInvoker).GetMethod(nameof(FiveParameters))),
+                Throws.TypeOf<NotSupportedException>()
+            );
+        }
+
+        public int RefMethod(ref int x)
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void TestInvokeRef()
+        {
+            Assert.That(
+                () => FuncInvoker.Create(typeof(TestFuncInvoker).GetMethod(nameof(RefMethod))),
+                Throws.TypeOf<NotSupportedException>()
+            );
+        }
+
+        [Test]
+        public void TestInvokeOut()
+        {
+            Assert.That(
+                () => FuncInvoker.Create(typeof(Guid).GetMethod(nameof(Guid.TryParse))),
+                Throws.TypeOf<NotSupportedException>()
+            );
+        }
+
+        [Test]
+        public void TestInvokeVoid()
+        {
+            Assert.That(
+                () => FuncInvoker.Create(typeof(TestFuncInvoker).GetMethod(nameof(SetUp))),
+                Throws.TypeOf<NotSupportedException>()
+            );
+        }
+
+        [Test]
+        public void TestInvokeThunk()
+        {
+            var newGuid = FuncInvoker.Create(typeof(Guid).GetMethod(nameof(Guid.NewGuid)));
+            Assert.That((Guid) newGuid.Invoke(), Is.Not.EqualTo(Guid.Empty));
+        }
+
         [Test]
         public void TestInvoke0()
         {
-            var getLength = FuncInvoker.Create(typeof(string).GetProperty("Length").GetMethod);
+            // ReSharper disable once PossibleNullReferenceException
+            var getLength = FuncInvoker.Create(typeof(string).GetProperty(nameof(string.Length)).GetMethod);
             Assert.That((int) getLength.Invoke(_string), Is.EqualTo(_string.Length));
         }
 
@@ -41,7 +95,7 @@ namespace Sciff.Tests.LambdaReflection.Invocation
         [Test]
         public void TestStaticInvoke1()
         {
-            var checkHostName = FuncInvoker.Create(typeof(Uri).GetMethod("CheckHostName"));
+            var checkHostName = FuncInvoker.Create(typeof(Uri).GetMethod(nameof(Uri.CheckHostName)));
             Assert.That((UriHostNameType) checkHostName.Invoke("www.test.com"), Is.EqualTo(UriHostNameType.Dns));
         }
     }

@@ -31,7 +31,7 @@ namespace Sciff.Logic.LambdaReflection.Invocation
         public static Tuple<Type, Type> ToFuncInvokerTypes(MethodInfo method)
         {
             var parameters = method.GetParameters();
-            if (parameters.Any(p => p == null || p.IsRetval || p.IsOut))
+            if (parameters.Any(ContractHelpers.IsComplexParmeter))
                 throw new NotSupportedException("All parameters must be input only, out and ref don't work in a func");
 
             if (method.ReturnType == typeof(void))
